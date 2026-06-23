@@ -2,22 +2,7 @@ import { testLogin } from "@/components/authService";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native"
 
-export default function GisaLogin() {
-  const [login, setLogin] = useState<string>();
-  const [senha, setSenha] = useState<string>();
-  const [msnResp, setMsnResp] = useState<string>();
-
-  const validacao = () => {
-    const saida = testLogin(login || '', senha || '');
-    switch(saida){
-      case 10: setMsnResp("Login administrativo correto");
-      case 20: setMsnResp("Login medico correto");
-      case 30: setMsnResp("Login paciente correto");
-      default: setMsnResp("Login incorreto");
-    }
-  }
-
-  const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     default: {
       flex: 1,
       justifyContent: 'center',
@@ -26,6 +11,20 @@ export default function GisaLogin() {
     },
   });
 
+export default function GisaLogin() {
+  const [login, setLogin] = useState<string>();
+  const [senha, setSenha] = useState<string>();
+  const [msnResp, setMsnResp] = useState<string>();
+
+  const validacao = () => {
+    const saida = testLogin(login || '', senha || '');
+    switch(saida){
+      case 10: setMsnResp("Login administrativo correto"); break;
+      case 20: setMsnResp("Login medico correto"); break;
+      case 30: setMsnResp("Login paciente correto"); break;
+      default: setMsnResp("Login incorreto"); break;
+    }
+  }
   return(
     <View style = {styles.default}>
       <Text>Bem vindo ao GISA</Text>
