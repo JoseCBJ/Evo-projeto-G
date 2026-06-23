@@ -7,7 +7,10 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       padding: 30, 
-      backgroundColor: '#7b97b1'
+      backgroundColor: '#7b97b1',
+      borderRadius: 15,
+      borderColor: 'white',
+      borderWidth: 13,
     },
   });
 
@@ -25,6 +28,7 @@ export default function GisaLogin() {
       default: setMsnResp("Login incorreto"); break;
     }
   }
+
   return(
     <View style = {styles.default}>
       <Text>Bem vindo ao GISA</Text>
@@ -33,11 +37,20 @@ export default function GisaLogin() {
         placeholder="login"
         onChangeText={setLogin}
         value={login}
+        style={{borderWidth: 2, 
+                borderColor: msnResp === 'Login incorreto' ? 'red' : '#3dc55f',
+                padding: 10, 
+                marginBottom: 10 }}
       />
       <TextInput
         placeholder="senha"
         onChangeText={setSenha}
         value={senha}
+        secureTextEntry={true}
+        style={{borderWidth: 2, 
+                borderColor: msnResp === 'Login incorreto' ? 'red' : '#3dc55f',
+                padding: 10, 
+                marginBottom: 10 }}
       />
       <TouchableOpacity onPress={validacao}>
         <Text>Login</Text>
